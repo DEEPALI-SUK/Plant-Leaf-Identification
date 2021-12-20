@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+    <title>Leaf Classification</title>
+
+
+    <link href="{{url_for('static', filename='./vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{url_for('static', filename='./vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lobster&family=Monoton&display=swap" rel="stylesheet">
+
+    <link href="{{url_for('static', filename='./css/main.css')}}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Leaf Classification</h2>
+
+                    <form action="{{ url_for('classify_leaf') }}" method="post"  enctype="multipart/form-data">
+						<h4 >{{msg}}</h4>
+                        <div class="input-group">
+                            <input class="input--style-2" type="file"  name="file1" required>
+                        </div>
+						<div class="input-group">
+                            <input class="input--style-2" type="file"  name="file2" required>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-2" type="file"  name="file3" required>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-2" type="file"  name="file4" required>
+                        </div>
+						<div class="input-group">
+                            <input class="input--style-2" type="file"  name="file5" required>
+                        </div>
+
+                        <div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit">Search</button>
+                        </div>
+
+						{% if res %}
+                        	{% for i in range(0,5) %}
+                            	<h3>Estimated Category for Choice {{i}}: {{res[i]}}</h3>
+                        	{% endfor %}
+                    	{%endif%}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{url_for('static', filename='./vendor/jquery/jquery.min.js')}}"></script>
+
+
+</body>
+
+</html>
